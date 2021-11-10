@@ -1,0 +1,16 @@
+C:\Users\duduh\Desktop\ChassGame-CSharp-ConsoleApplication-\ConsoleChass\ConsoleChass\bin\Debug\net5.0\ConsoleChass.exe
+C:\Users\duduh\Desktop\ChassGame-CSharp-ConsoleApplication-\ConsoleChass\ConsoleChass\bin\Debug\net5.0\ConsoleChass.deps.json
+C:\Users\duduh\Desktop\ChassGame-CSharp-ConsoleApplication-\ConsoleChass\ConsoleChass\bin\Debug\net5.0\ConsoleChass.runtimeconfig.json
+C:\Users\duduh\Desktop\ChassGame-CSharp-ConsoleApplication-\ConsoleChass\ConsoleChass\bin\Debug\net5.0\ConsoleChass.runtimeconfig.dev.json
+C:\Users\duduh\Desktop\ChassGame-CSharp-ConsoleApplication-\ConsoleChass\ConsoleChass\bin\Debug\net5.0\ConsoleChass.dll
+C:\Users\duduh\Desktop\ChassGame-CSharp-ConsoleApplication-\ConsoleChass\ConsoleChass\bin\Debug\net5.0\ref\ConsoleChass.dll
+C:\Users\duduh\Desktop\ChassGame-CSharp-ConsoleApplication-\ConsoleChass\ConsoleChass\bin\Debug\net5.0\ConsoleChass.pdb
+C:\Users\duduh\Desktop\ChassGame-CSharp-ConsoleApplication-\ConsoleChass\ConsoleChass\obj\Debug\net5.0\ConsoleChass.csproj.AssemblyReference.cache
+C:\Users\duduh\Desktop\ChassGame-CSharp-ConsoleApplication-\ConsoleChass\ConsoleChass\obj\Debug\net5.0\ConsoleChass.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\duduh\Desktop\ChassGame-CSharp-ConsoleApplication-\ConsoleChass\ConsoleChass\obj\Debug\net5.0\ConsoleChass.AssemblyInfoInputs.cache
+C:\Users\duduh\Desktop\ChassGame-CSharp-ConsoleApplication-\ConsoleChass\ConsoleChass\obj\Debug\net5.0\ConsoleChass.AssemblyInfo.cs
+C:\Users\duduh\Desktop\ChassGame-CSharp-ConsoleApplication-\ConsoleChass\ConsoleChass\obj\Debug\net5.0\ConsoleChass.csproj.CoreCompileInputs.cache
+C:\Users\duduh\Desktop\ChassGame-CSharp-ConsoleApplication-\ConsoleChass\ConsoleChass\obj\Debug\net5.0\ConsoleChass.dll
+C:\Users\duduh\Desktop\ChassGame-CSharp-ConsoleApplication-\ConsoleChass\ConsoleChass\obj\Debug\net5.0\ref\ConsoleChass.dll
+C:\Users\duduh\Desktop\ChassGame-CSharp-ConsoleApplication-\ConsoleChass\ConsoleChass\obj\Debug\net5.0\ConsoleChass.pdb
+C:\Users\duduh\Desktop\ChassGame-CSharp-ConsoleApplication-\ConsoleChass\ConsoleChass\obj\Debug\net5.0\ConsoleChass.genruntimeconfig.cache
