@@ -7,15 +7,20 @@ using System.Threading.Tasks;
 
 namespace ConsoleChass.Chass
 {
-    class Dama : Peca
+    class Bispo : Peca
     {
-        public Dama(Cor cor, Tab tab) : base(cor, tab)
+        public Bispo(Cor cor, Tab tab) : base(cor, tab)
         {
 
         }
         public override string ToString()
         {
-            return "D";
+            return "B";
+        }
+
+        public override bool[,] movimentosPossiveis()
+        {
+            throw new NotImplementedException();
         }
     }
 }

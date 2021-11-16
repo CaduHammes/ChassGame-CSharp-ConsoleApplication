@@ -16,7 +16,12 @@ namespace ConsoleChass.Chass
 
         public override string ToString()
         {
-            return "R";
+            return "{R}";
+        }
+
+        public override bool[,] movimentosPossiveis()
+        {
+            throw new NotImplementedException();
         }
     }
 }

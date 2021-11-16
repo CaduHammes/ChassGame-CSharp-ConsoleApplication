@@ -16,8 +16,17 @@ namespace ConsoleChass
                 {
                     Console.Clear();
                     Tela.imprimirTabuleiro(partida.tab);
+
+                    Console.WriteLine();
                     Console.Write("Digite a posicao de origem: ");
                     Posicao origem = Tela.lerPosicaoChass().toPosicao();
+
+                    bool[,] posicoesPossiveis = partida.tab.peca(origem).movimentosPossiveis();
+
+                    Console.Clear();
+                    Tela.imprimirTabuleiro(partida.tab, posicoesPossiveis);
+
+                    Console.WriteLine();
                     Console.Write("Digite a posicao de destino: ");
                     Posicao destino = Tela.lerPosicaoChass().toPosicao();
 

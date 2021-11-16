@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleChass.Tabuleiro
 {
-    class Peca
+    abstract class Peca
     {
         public Posicao posicao { get; set; }
         public Cor cor { get; protected set; }
@@ -26,5 +26,9 @@ namespace ConsoleChass.Tabuleiro
         {
             qntMovimentos++;
         }
+
+        public abstract bool[,] movimentosPossiveis();
+
+
     }
 }
