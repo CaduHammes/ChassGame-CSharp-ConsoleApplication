@@ -18,7 +18,7 @@ namespace ConsoleChass.Chass
             return "B";
         }
 
-        public override bool[,] movimentosPossiveis()
+        public override bool[,] MovimentosPossiveis()
         {
             throw new NotImplementedException();
         }

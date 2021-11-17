@@ -13,25 +13,32 @@ namespace ConsoleChass.Chass
         public int turno { get; private set; }
         public Cor jogadorAtual { get; private set; }
         public bool terminada { get; private set; }
-
+        private HashSet<Peca> pecas;
+        private HashSet<Peca> capturadas;
         public PartidaDeChass()
         {
             tab = new Tab(8, 8);
             turno = 1;
             jogadorAtual = Cor.Branca;
             terminada = false;
-            colocarPecas();
+            pecas = new HashSet<Peca>();
+            capturadas = new HashSet<Peca>();
+            ColocarPecas();
         }
 
         public void ExecutaMovimento(Posicao origem, Posicao destino)
         {
-            Peca p = tab.retirarPeca(origem);
-            p.incrementarQntDeMovimentos();
-            Peca pecaCapturada = tab.retirarPeca(destino);
-            tab.colocarPeca(p, destino);
+            Peca p = tab.RetirarPeca(origem);
+            p.IncrementarQntDeMovimentos();
+            Peca pecaCapturada = tab.RetirarPeca(destino);
+            tab.ColocarPeca(p, destino);
+            if (pecaCapturada != null)
+            {
+                capturadas.Add(pecaCapturada);
+            }
         }
 
-        public void realizaJogada(Posicao origem, Posicao destino)
+        public void RealizaJogada(Posicao origem, Posicao destino)
         {
             ExecutaMovimento(origem, destino);
             turno++;
@@ -40,28 +47,28 @@ namespace ConsoleChass.Chass
 
         public void ValidarPosicaoDeOrigem(Posicao pos)
         {
-            if (tab.peca(pos) == null)
+            if (tab.Peca(pos) == null)
             {
                 throw new TabuleiroException("\nNão existe peça na posição de origem escolhida" +
                     "\nPressione enter para continuar...");
             }
-            if (jogadorAtual != tab.peca(pos).cor)
+            if (jogadorAtual != tab.Peca(pos).cor)
             {
-                throw new TabuleiroException("A peça de origem escolhida não é sua" +
+                throw new TabuleiroException("\nA peça de origem escolhida não é sua" +
                     "\nPressione enter para continuar...");
             }
-            if (!tab.peca(pos).ExisteMovimentosPossiveis())
+            if (!tab.Peca(pos).ExisteMovimentosPossiveis())
             {
-                throw new TabuleiroException("Não há movimentos possíveis para a peça de origem escolhida" +
+                throw new TabuleiroException("\nNão há movimentos possíveis para a peça de origem escolhida" +
                     "\nPressione enter para continuar...");
             }
         }
 
         public void ValidarPosicaoDeDestino(Posicao origem, Posicao destino)
         {
-            if (!tab.peca(origem).podeMoverPara(destino))
+            if (!tab.Peca(origem).PodeMoverPara(destino))
             {
-                throw new TabuleiroException("Posição de destino invalida" +
+                throw new TabuleiroException("\nPosição de destino invalida" +
                     "\nPressione enter para continuar...");
             }
         }
@@ -78,21 +85,56 @@ namespace ConsoleChass.Chass
             }
         }
 
-        private void colocarPecas()
+        public HashSet<Peca> PecasCapturadas(Cor cor)
         {
-            tab.colocarPeca(new Torre(Cor.Branca, tab), new PosicaoChass('c', 1).toPosicao());
-            tab.colocarPeca(new Torre(Cor.Branca, tab), new PosicaoChass('c', 2).toPosicao());
-            tab.colocarPeca(new Torre(Cor.Branca, tab), new PosicaoChass('d', 2).toPosicao());
-            tab.colocarPeca(new Torre(Cor.Branca, tab), new PosicaoChass('e', 2).toPosicao());
-            tab.colocarPeca(new Torre(Cor.Branca, tab), new PosicaoChass('e', 1).toPosicao());
-            tab.colocarPeca(new Rei(Cor.Branca, tab), new PosicaoChass('d', 1).toPosicao());
+            HashSet<Peca> aux = new HashSet<Peca>();
 
-            tab.colocarPeca(new Torre(Cor.Preta, tab), new PosicaoChass('c', 7).toPosicao());
-            tab.colocarPeca(new Torre(Cor.Preta, tab), new PosicaoChass('c', 8).toPosicao());
-            tab.colocarPeca(new Torre(Cor.Preta, tab), new PosicaoChass('d', 7).toPosicao());
-            tab.colocarPeca(new Torre(Cor.Preta, tab), new PosicaoChass('e', 7).toPosicao());
-            tab.colocarPeca(new Torre(Cor.Preta, tab), new PosicaoChass('e', 8).toPosicao());
-            tab.colocarPeca(new Rei(Cor.Preta, tab), new PosicaoChass('d', 8).toPosicao());
+            foreach (Peca x in capturadas)
+            {
+                if (x.cor == cor)
+                {
+                    aux.Add(x);
+                }
+            }
+            return aux;
+        }
+
+        public HashSet<Peca> PecasEmJogo(Cor cor)
+        {
+            HashSet<Peca> aux = new HashSet<Peca>();
+
+            foreach (Peca x in capturadas)
+            {
+                if (x.cor == cor)
+                {
+                    aux.Add(x);
+                }
+            }
+            aux.ExceptWith(PecasCapturadas(cor));
+            return aux;
+        }
+
+        public void ColocarNovaPeca(char coluna, int linha, Peca peca)
+        {
+            tab.ColocarPeca(peca, new PosicaoChass(coluna, linha).ToPosicao());
+            pecas.Add(peca);
+        }
+
+        private void ColocarPecas()
+        {
+            ColocarNovaPeca('c', 1, new Torre(Cor.Branca, tab));
+            ColocarNovaPeca('c', 2, new Torre(Cor.Branca, tab));
+            ColocarNovaPeca('d', 2, new Torre(Cor.Branca, tab));
+            ColocarNovaPeca('e', 2, new Torre(Cor.Branca, tab));
+            ColocarNovaPeca('e', 1, new Torre(Cor.Branca, tab));
+            ColocarNovaPeca('d', 1, new Rei(Cor.Branca, tab));
+
+            ColocarNovaPeca('c', 7, new Torre(Cor.Preta, tab));
+            ColocarNovaPeca('c', 8, new Torre(Cor.Preta, tab));
+            ColocarNovaPeca('d', 7, new Torre(Cor.Preta, tab));
+            ColocarNovaPeca('e', 7, new Torre(Cor.Preta, tab));
+            ColocarNovaPeca('e', 8, new Torre(Cor.Preta, tab));
+            ColocarNovaPeca('d', 8, new Rei(Cor.Preta, tab));
         }
     }
 }

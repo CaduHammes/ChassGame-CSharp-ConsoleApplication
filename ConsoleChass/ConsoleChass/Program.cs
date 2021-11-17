@@ -17,27 +17,24 @@ namespace ConsoleChass
                     try
                     {
                         Console.Clear();
-                        Tela.imprimirTabuleiro(partida.tab);
-                        Console.WriteLine();
-                        Console.WriteLine("Turno: " + partida.turno);
-                        Console.WriteLine("Aguardando jogada: " + partida.jogadorAtual);
+                        Tela.ImprimirPartida(partida);
 
                         Console.WriteLine();
                         Console.Write("Digite a posicao de origem: ");
-                        Posicao origem = Tela.lerPosicaoChass().toPosicao();
+                        Posicao origem = Tela.LerPosicaoChass().ToPosicao();
                         partida.ValidarPosicaoDeOrigem(origem);
 
-                        bool[,] posicoesPossiveis = partida.tab.peca(origem).movimentosPossiveis();
+                        bool[,] posicoesPossiveis = partida.tab.Peca(origem).MovimentosPossiveis();
 
                         Console.Clear();
-                        Tela.imprimirTabuleiro(partida.tab, posicoesPossiveis);
+                        Tela.ImprimirTabuleiro(partida.tab, posicoesPossiveis);
 
                         Console.WriteLine();
                         Console.Write("Digite a posicao de destino: ");
-                        Posicao destino = Tela.lerPosicaoChass().toPosicao();
+                        Posicao destino = Tela.LerPosicaoChass().ToPosicao();
                         partida.ValidarPosicaoDeDestino(origem, destino);
 
-                        partida.ExecutaMovimento(origem, destino);
+                        partida.RealizaJogada(origem, destino);
                     }
                     catch (TabuleiroException tabE)
                     {

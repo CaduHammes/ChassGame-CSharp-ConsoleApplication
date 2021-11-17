@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\duduh\\OneDrive\\Área de Trabalho\\ChassGame-CSharp-ConsoleApplication-\\ConsoleChass\\ConsoleChass\\ConsoleChass.csproj": {}
+    "C:\\Users\\duduh\\OneDrive\\Área de Trabalho\\ChassGame-CSharp-ConsoleApplication\\ConsoleChass\\ConsoleChass\\ConsoleChass.csproj": {}
   },
   "projects": {
-    "C:\\Users\\duduh\\OneDrive\\Área de Trabalho\\ChassGame-CSharp-ConsoleApplication-\\ConsoleChass\\ConsoleChass\\ConsoleChass.csproj": {
+    "C:\\Users\\duduh\\OneDrive\\Área de Trabalho\\ChassGame-CSharp-ConsoleApplication\\ConsoleChass\\ConsoleChass\\ConsoleChass.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\duduh\\OneDrive\\Área de Trabalho\\ChassGame-CSharp-ConsoleApplication-\\ConsoleChass\\ConsoleChass\\ConsoleChass.csproj",
+        "projectUniqueName": "C:\\Users\\duduh\\OneDrive\\Área de Trabalho\\ChassGame-CSharp-ConsoleApplication\\ConsoleChass\\ConsoleChass\\ConsoleChass.csproj",
         "projectName": "ConsoleChass",
-        "projectPath": "C:\\Users\\duduh\\OneDrive\\Área de Trabalho\\ChassGame-CSharp-ConsoleApplication-\\ConsoleChass\\ConsoleChass\\ConsoleChass.csproj",
+        "projectPath": "C:\\Users\\duduh\\OneDrive\\Área de Trabalho\\ChassGame-CSharp-ConsoleApplication\\ConsoleChass\\ConsoleChass\\ConsoleChass.csproj",
         "packagesPath": "C:\\Users\\duduh\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\duduh\\OneDrive\\Área de Trabalho\\ChassGame-CSharp-ConsoleApplication-\\ConsoleChass\\ConsoleChass\\obj\\",
+        "outputPath": "C:\\Users\\duduh\\OneDrive\\Área de Trabalho\\ChassGame-CSharp-ConsoleApplication\\ConsoleChass\\ConsoleChass\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\duduh\\AppData\\Roaming\\NuGet\\NuGet.Config",

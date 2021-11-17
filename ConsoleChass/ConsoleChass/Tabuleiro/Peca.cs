@@ -22,14 +22,14 @@ namespace ConsoleChass.Tabuleiro
             this.qntMovimentos = 0;
         }
 
-        public void incrementarQntDeMovimentos()
+        public void IncrementarQntDeMovimentos()
         {
             qntMovimentos++;
         }
 
         public bool ExisteMovimentosPossiveis()
         {
-            bool[,] mat = movimentosPossiveis();
+            bool[,] mat = MovimentosPossiveis();
             for (int i = 0; i < tab.linhas; i++)
             {
                 for (int j = 0; j < tab.colunas; j++)
@@ -43,12 +43,12 @@ namespace ConsoleChass.Tabuleiro
             return false;
         }
 
-        public bool podeMoverPara(Posicao pos)
+        public bool PodeMoverPara(Posicao pos)
         {
-            return movimentosPossiveis()[pos.Linha, pos.Coluna];
+            return MovimentosPossiveis()[pos.Linha, pos.Coluna];
         }
 
-        public abstract bool[,] movimentosPossiveis();
+        public abstract bool[,] MovimentosPossiveis();
 
 
     }
