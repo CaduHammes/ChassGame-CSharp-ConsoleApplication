@@ -42,6 +42,8 @@ namespace ConsoleChass
                         Console.ReadLine();
                     }
                 }
+                Console.Clear();
+                Tela.ImprimirPartida(partida);
             }
             catch (TabuleiroException tabE)
             {

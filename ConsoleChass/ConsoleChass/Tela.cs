@@ -17,11 +17,21 @@ namespace ConsoleChass
             ImprimirPecasCapturadas(partida);
             Console.WriteLine();
             Console.WriteLine("Turno: " + partida.turno);
-            Console.WriteLine("Aguardando jogada: " + partida.jogadorAtual);
-            if (partida.Xeque)
+
+            if (!partida.terminada)
             {
-                Console.WriteLine("O rei esta em Xeque");
+                Console.WriteLine("Aguardando jogada: " + partida.jogadorAtual);
+                if (partida.Xeque)
+                {
+                    Console.WriteLine("O rei esta em Xeque");
+                }
             }
+            else
+            {
+                Console.WriteLine("\nXEQUEMATE");
+                Console.WriteLine("VENCEDOR: " + partida.jogadorAtual + "\n");
+            }
+
         }
 
         public static void ImprimirPecasCapturadas(PartidaDeChass partida)
