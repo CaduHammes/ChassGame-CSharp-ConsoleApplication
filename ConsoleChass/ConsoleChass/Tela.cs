@@ -57,14 +57,14 @@ namespace ConsoleChass
         {
             for (int i = 0; i < tab.linhas; i++)
             {
-                Console.Write(8 - i + " ");
+                Console.Write(8 - i + "  ");
                 for (int j = 0; j < tab.colunas; j++)
                 {
                     ImprimirPeca(tab.Peca(i, j));
                 }
                 Console.WriteLine();
             }
-            Console.WriteLine("  A B C D E F G H");
+            Console.WriteLine("\n   A B C D E F G H");
         }
 
         public static void ImprimirTabuleiro(Tab tab, bool[,] posicoesPossiveis)
@@ -74,7 +74,7 @@ namespace ConsoleChass
 
             for (int i = 0; i < tab.linhas; i++)
             {
-                Console.Write(8 - i + " ");
+                Console.Write(8 - i + "  ");
                 for (int j = 0; j < tab.colunas; j++)
                 {
                     if (posicoesPossiveis[i, j] == true)
@@ -90,7 +90,7 @@ namespace ConsoleChass
                 }
                 Console.WriteLine();
             }
-            Console.WriteLine("  A B C D E F G H");
+            Console.WriteLine("\n   A B C D E F G H");
             Console.BackgroundColor = fundoOriginal;
         }
 
