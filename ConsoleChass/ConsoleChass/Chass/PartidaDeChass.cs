@@ -15,18 +15,21 @@ namespace ConsoleChass.Chass
         public bool terminada { get; private set; }
         private HashSet<Peca> pecas;
         private HashSet<Peca> capturadas;
+        public bool Xeque { get; private set; }
+
         public PartidaDeChass()
         {
             tab = new Tab(8, 8);
             turno = 1;
             jogadorAtual = Cor.Branca;
             terminada = false;
+            Xeque = false;
             pecas = new HashSet<Peca>();
             capturadas = new HashSet<Peca>();
             ColocarPecas();
         }
 
-        public void ExecutaMovimento(Posicao origem, Posicao destino)
+        public Peca ExecutaMovimento(Posicao origem, Posicao destino)
         {
             Peca p = tab.RetirarPeca(origem);
             p.IncrementarQntDeMovimentos();
@@ -36,11 +39,42 @@ namespace ConsoleChass.Chass
             {
                 capturadas.Add(pecaCapturada);
             }
+            return pecaCapturada;
+        }
+
+        public void DesfazMovimento(Posicao origem, Posicao destino, Peca pecaCapturada)
+        {
+            Peca p = tab.RetirarPeca(destino);
+            p.DecrementarQntDeMovimentos();
+
+            if (pecaCapturada != null)
+            {
+                tab.ColocarPeca(pecaCapturada, destino);
+                capturadas.Remove(pecaCapturada);
+            }
+            tab.ColocarPeca(p, origem);
         }
 
         public void RealizaJogada(Posicao origem, Posicao destino)
         {
-            ExecutaMovimento(origem, destino);
+            Peca pecaCapturada = ExecutaMovimento(origem, destino);
+
+            if (EstaEmXeque(jogadorAtual))
+            {
+                DesfazMovimento(origem, destino, pecaCapturada);
+                throw new TabuleiroException("\nVoce nao pode se colocar em xeque" +
+                    "\nPressione enter para continuar...");
+            }
+
+            if (EstaEmXeque(Adversaria(jogadorAtual)))
+            {
+                Xeque = true;
+            }
+            else
+            {
+                Xeque = false;
+            }
+
             turno++;
             MudaJogador();
         }
@@ -103,7 +137,7 @@ namespace ConsoleChass.Chass
         {
             HashSet<Peca> aux = new HashSet<Peca>();
 
-            foreach (Peca x in capturadas)
+            foreach (Peca x in pecas)
             {
                 if (x.cor == cor)
                 {
@@ -112,6 +146,53 @@ namespace ConsoleChass.Chass
             }
             aux.ExceptWith(PecasCapturadas(cor));
             return aux;
+        }
+
+        private Cor Adversaria(Cor cor)
+        {
+            if (cor == Cor.Branca)
+            {
+                return Cor.Preta;
+            }
+            else
+            {
+                return Cor.Branca;
+            }
+        }
+
+        private Peca Rei(Cor cor)
+        {
+            foreach (Peca x in PecasEmJogo(cor))
+            {
+                if (x is Rei)
+                {
+                    return x;
+                }
+            }
+            return null;
+        }
+
+        public bool EstaEmXeque(Cor cor)
+        {
+            Peca r = Rei(cor);
+
+            if (r == null)
+            {
+                throw new TabuleiroException("\nNao tem rei da cor " + cor + " no tabuleiro" +
+                    "\nPressione enter para continuar...");
+            }
+
+            foreach (Peca x in PecasEmJogo(Adversaria(cor)))
+            {
+                bool[,] mat = x.MovimentosPossiveis();
+
+                if (mat[r.posicao.Linha, r.posicao.Coluna])
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
 
         public void ColocarNovaPeca(char coluna, int linha, Peca peca)

@@ -27,6 +27,11 @@ namespace ConsoleChass.Tabuleiro
             qntMovimentos++;
         }
 
+        public void DecrementarQntDeMovimentos()
+        {
+            qntMovimentos--;
+        }
+
         public bool ExisteMovimentosPossiveis()
         {
             bool[,] mat = MovimentosPossiveis();

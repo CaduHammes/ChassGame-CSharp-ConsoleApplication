@@ -18,6 +18,10 @@ namespace ConsoleChass
             Console.WriteLine();
             Console.WriteLine("Turno: " + partida.turno);
             Console.WriteLine("Aguardando jogada: " + partida.jogadorAtual);
+            if (partida.Xeque)
+            {
+                Console.WriteLine("O rei esta em Xeque");
+            }
         }
 
         public static void ImprimirPecasCapturadas(PartidaDeChass partida)
